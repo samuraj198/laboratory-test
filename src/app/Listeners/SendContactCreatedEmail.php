@@ -5,6 +5,7 @@ namespace App\Listeners;
 use App\Events\ContactCreated;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
 class SendContactCreatedEmail implements ShouldQueue
@@ -21,9 +22,11 @@ class SendContactCreatedEmail implements ShouldQueue
                 <li><b>Email:</b> {$event->contact->email}</li>
                 <li><b>Комментарий:</b> {$event->contact->comment}</li>
             </ul>
-", function ($message) use ($event) {
+        ", function ($message) use ($event) {
             $message->to($event->contact->email)
                 ->subject('Создан новый запрос на сайте');
         });
+
+        Log::info("Письмо отправлено по почте " . $event->contact->email);
     }
 }
