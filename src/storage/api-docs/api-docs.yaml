@@ -1,0 +1,111 @@
+openapi: 3.0.3
+info:
+  title: Test API
+  description: Test API
+  version: 1.0.0
+servers:
+  - url: 'http://localhost:8000/api'
+paths:
+  /contact:
+    post:
+      summary: 'Добавление запроса в бд'
+      tags:
+        - Contact
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StoreContact'
+      responses:
+        '201':
+          description: 'Запрос сохранен'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Запрос успешно сохранен в бд'
+                  data:
+                    $ref: '#/components/schemas/Contact'
+        '422':
+          description: 'Ошибка(-и) валидации'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'Ошибка валидации'
+                  errors:
+                    type: object
+                    properties:
+                      field:
+                        type: array
+                        example:
+                          ['Сообщение об ошибке для определенного поля']
+        '429':
+          description: 'Спам'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'Слишком много запросов за 1 минуту'
+
+components:
+  schemas:
+    Contact:
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: 'Some name'
+        phone:
+          type: string
+          example: '8900000000'
+        email:
+          type: string
+          example: 'example@example.ru'
+        comment:
+          type: string
+          example: 'Some comment'
+        created_at:
+          type: string
+          format: date-time
+          example: '2026-07-17T12:34:56.000000Z'
+        updated_at:
+          type: string
+          format: date-time
+          example: '2026-07-17T12:34:56.000000Z'
+
+    StoreContact:
+      properties:
+        name:
+          type: string
+          example: 'Some name'
+        phone:
+          type: string
+          example: '8900000000'
+        email:
+          type: string
+          example: 'example@example.ru'
+        comment:
+          type: string
+          example: 'Some comment'
