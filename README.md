@@ -13,7 +13,7 @@
    - docker-compose exec app php artisan migrate
    - Вставить API ключи в .env файл (ключи пришлю в личку)
    - make artisan queue:work
-   - 
+
 ## Стек технологий
 - Backend: PHP/Laravel. Из библиотек - Ziggy, Inertia, resend-laravel, swagger, ai, gigachat-php
 - AI: библиотека от Laravel laravel/ai и GigaChat от сбербанка
