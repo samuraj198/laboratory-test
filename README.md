@@ -6,13 +6,15 @@
    - Вставить API ключи в .env файл (ключи пришлю в личку)
    - make artisan queue:work
 2. Если нет
-   - copy src\.env.example src\.env
+   - copy src/.env.example src/.env
    - docker compose build --no-cache
    - docker compose up -d
    - docker-compose exec app php artisan key:generate
    - docker-compose exec app php artisan migrate
    - Вставить API ключи в .env файл (ключи пришлю в личку)
    - make artisan queue:work
+3. Или просто перейти по ссылке
+   - https://laboratory-test.onrender.com/
 
 ## Стек технологий
 - Backend: PHP/Laravel. Из библиотек - Ziggy, Inertia, resend-laravel, swagger, ai, gigachat-php
