@@ -2,9 +2,7 @@
 
 namespace App\Providers;
 
-use App\Events\ContactCreated;
-use App\Listeners\AITryAnswerToContact;
-use App\Listeners\SendContactCreatedEmail;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Vite;
 use Illuminate\Support\ServiceProvider;
 
