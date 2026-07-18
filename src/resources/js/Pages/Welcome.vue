@@ -25,9 +25,10 @@ const submit = () => {
             <TextInput required v-model="form.name" type="text" label="Имя" />
             <TextInput required v-model="form.phone" type="tel" label="Номер телефона" />
             <TextInput required v-model="form.email" type="email" label="Почта" />
-            <TextInput required v-model="form.comment" type="text" label="Комменатрий" />
+            <TextInput required v-model="form.comment" type="text" label="Комментарий" />
             <FormButton type="submit"
                         text="Отправить"
+                        :processing="form.processing"
                         :disabled="form.name === '' ||
                         form.phone === '' ||
                         form.email === '' ||
