@@ -26,10 +26,10 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-install pdo_mysql pdo_pgsql pcntl \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Установка расширений Redis и PCOV
-RUN pecl install redis && docker-php-ext-enable redis \
-    && pecl install pcov && docker-php-ext-enable pcov \
+# Установка расширений PCOV
+RUN pecl install pcov && docker-php-ext-enable pcov \
     && echo "pcov.directory=/var/www/html" >> /usr/local/etc/php/conf.d/docker-php-ext-pcov.ini
+
 
 # Установка Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
