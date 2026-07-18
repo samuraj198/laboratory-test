@@ -8,7 +8,7 @@ use Illuminate\Foundation\Queue\Queueable;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
-class SendContactCreatedEmail
+class SendContactCreatedEmail implements ShouldQueue
 {
     use Queueable;
 
