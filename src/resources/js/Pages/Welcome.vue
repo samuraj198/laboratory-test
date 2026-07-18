@@ -34,6 +34,9 @@ const submit = () => {
                         form.email === '' ||
                         form.comment === ''" />
         </form>
+        <div v-if="form.hasErrors" class="errors text-red-500 flex flex-col items-center gap-4">
+            <p v-for="(error, key) in form.errors" :key="key">{{ error }}</p>
+        </div>
     </div>
 </template>
 
