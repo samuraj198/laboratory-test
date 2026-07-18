@@ -43,7 +43,7 @@ COPY ./src /var/www/html
 COPY --from=frontend-builder /app/public/build /var/www/html/public/build
 
 # Настраиваем Nginx (Файл берется из корня вашего репозитория: ./docker/nginx/...)
-COPY ./docker/nginx/nginx.prod.conf /etc/nginx/sites-available/default
+COPY ./nginx/nginx.prod.conf /etc/nginx/sites-available/default
 RUN ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 
 # Настраиваем Supervisor (Файл берется из корня вашего репозитория: ./docker/supervisor/...)
